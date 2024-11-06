@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Search, Filter } from 'lucide-react'
+import { Search, Filter, ClipboardList, Video, Calendar } from 'lucide-react'
 import Layout from '@/components/layout/layout'
 import Link from 'next/link'
 
@@ -99,21 +99,30 @@ export default function ClubProfiles() {
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[425px] bg-blue-50">
                     <DialogHeader>
-                      <DialogTitle>{club.name} Application</DialogTitle>
+                      <DialogTitle>{club.name} Application Process</DialogTitle>
                       <DialogDescription>
-                        Review the application questions before applying.
+                        The application process consists of:
                       </DialogDescription>
                     </DialogHeader>
-                    <ScrollArea className="h-[200px] w-full rounded-md border p-4">
-                      <ol className="list-decimal pl-4 space-y-2">
-                        {club.application.questions.map((question, index) => (
-                          <li key={index} className="text-blue-700">{question}</li>
-                        ))}
-                      </ol>
-                    </ScrollArea>
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-2 text-blue-700">
+                        <ClipboardList className="h-5 w-5" />
+                        <span>1. Written Application</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-blue-700">
+                        <Video className="h-5 w-5" />
+                        <span>2. Video Introduction</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-blue-700">
+                        <Calendar className="h-5 w-5" />
+                        <span>3. In-Person Interview</span>
+                      </div>
+                    </div>
                     <div className="mt-4 flex justify-end">
-                      <Link href="/interview">
-                        <Button className="bg-blue-500 hover:bg-blue-600 text-white">Start Application</Button>
+                      <Link href={`/apply/${club.id}`}>
+                        <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+                          Start Application
+                        </Button>
                       </Link>
                     </div>
                   </DialogContent>
