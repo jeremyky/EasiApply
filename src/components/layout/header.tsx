@@ -9,13 +9,19 @@ export default function Header() {
         <span className="ml-2 text-2xl font-bold">EasiApply</span>
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/">
+          Home
+        </Link>
         <Link className="text-sm font-medium hover:underline underline-offset-4" href="/clubs">
           Clubs
         </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/applications">
-          My Applications
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/about">
+          About
         </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/profile">
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/contact">
+          Contact
+        </Link>
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/auth">
           Profile
         </Link>
       </nav>

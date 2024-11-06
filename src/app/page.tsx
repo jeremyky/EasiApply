@@ -2,27 +2,11 @@ import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ClipboardList, Video, Calendar, CheckCircle, Users, GraduationCap } from 'lucide-react'
+import Layout from '@/components/layout/layout'
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-blue-50">
-      <header className="px-4 lg:px-6 h-14 flex items-center bg-blue-600 text-white">
-        <Link className="flex items-center justify-center" href="#">
-          <GraduationCap className="h-6 w-6" />
-          <span className="ml-2 text-2xl font-bold">EasiApply</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Features
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            About
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Contact
-          </Link>
-        </nav>
-      </header>
+    <Layout>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-blue-100">
           <div className="container px-4 md:px-6">
@@ -36,8 +20,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button className="bg-blue-600 text-white hover:bg-blue-700">Get Started</Button>
-                <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-100">Learn More</Button>
+                <Link href="/clubs">
+                  <Button className="bg-blue-600 text-white hover:bg-blue-700">Get Started</Button>
+                </Link>
+                <Link href="/about">
+                  <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-100">
+                    Learn More
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -96,7 +86,9 @@ export default function HomePage() {
                   <CardDescription className="text-blue-600">Create your club profile and manage applications</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">Create Club Profile</Button>
+                  <Link href="/club-management">
+                    <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">Create Club Profile</Button>
+                  </Link>
                 </CardContent>
               </Card>
               <Card className="bg-white border-blue-200">
@@ -106,24 +98,15 @@ export default function HomePage() {
                   <CardDescription className="text-blue-600">Apply to clubs and track your applications</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">Start Applying</Button>
+                  <Link href="/club-profiles">
+                    <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">Start Applying</Button>
+                  </Link>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-blue-200 bg-blue-100">
-        <p className="text-xs text-blue-600">© 2024 EasiApply. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs text-blue-600 hover:underline underline-offset-4" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-xs text-blue-600 hover:underline underline-offset-4" href="#">
-            Privacy
-          </Link>
-        </nav>
-      </footer>
-    </div>
+    </Layout>
   )
 } 
