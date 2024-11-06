@@ -8,8 +8,13 @@ import { Calendar } from "@/components/ui/calendar"
 import Layout from '@/components/layout/layout'
 import Link from 'next/link'
 
+// Add type for availableSlots
+interface AvailableSlots {
+  [key: string]: string[];
+}
+
 // Mock available time slots
-const availableSlots = {
+const availableSlots: AvailableSlots = {
   "2024-03-15": ["10:00", "11:00", "14:00", "15:00"],
   "2024-03-16": ["09:00", "10:00", "11:00", "14:00"],
   "2024-03-17": ["13:00", "14:00", "15:00", "16:00"],
@@ -58,7 +63,7 @@ export default function SchedulePage() {
                   <h3 className="text-lg font-semibold mb-4 text-blue-700">Available Times</h3>
                   {selectedDate ? (
                     <div className="grid gap-2">
-                      {getAvailableSlots(selectedDate).map((time) => (
+                      {getAvailableSlots(selectedDate).map((time: string) => (
                         <Button
                           key={time}
                           variant={selectedTime === time ? "default" : "outline"}

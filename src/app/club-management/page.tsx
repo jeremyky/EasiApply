@@ -195,9 +195,24 @@ const clubData = {
   ]
 }
 
-// Add this function component for the Add Event Dialog
-function AddEventDialog({ isOpen, onClose, onSubmit }) {
-  const [newEvent, setNewEvent] = useState({
+// Add interfaces for the event data
+interface EventFormData {
+  name: string;
+  date: string;
+  time: string;
+  location: string;
+  capacity: string;
+  description: string;
+}
+
+interface AddEventDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (event: EventFormData) => void;
+}
+
+function AddEventDialog({ isOpen, onClose, onSubmit }: AddEventDialogProps) {
+  const [newEvent, setNewEvent] = useState<EventFormData>({
     name: '',
     date: '',
     time: '',
@@ -206,7 +221,7 @@ function AddEventDialog({ isOpen, onClose, onSubmit }) {
     description: ''
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     onSubmit(newEvent)
     onClose()
@@ -366,10 +381,11 @@ export default function ClubManagement() {
     }
   }
 
-  const handleAddEvent = (newEvent) => {
+  const handleAddEvent = (newEvent: EventFormData) => {
     const event = {
       id: events.length + 1,
       ...newEvent,
+      capacity: parseInt(newEvent.capacity, 10),
       registered: 0
     }
     setEvents([...events, event])
